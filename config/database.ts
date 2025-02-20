@@ -48,6 +48,18 @@ export default ({ env }) => {
       },
       useNullAsDefault: true,
     },
+    mongo: {
+      connection: {
+        uri: env('DATABASE_URI', 'mongodb://localhost:27017/strapi'),
+        database: env('DATABASE_NAME', 'strapi'),
+        options: {
+          ssl: env.bool('DATABASE_SSL', true),
+          authSource: env('AUTH_SOURCE', 'admin'),
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        },
+      },
+    },
   };
 
   return {
